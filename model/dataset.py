@@ -35,7 +35,7 @@ class PredictionDataset(Dataset):
         text = self.data[idx]
         inputs = tokenizer.encode_plus(text, add_special_tokens=True, return_tensors='pt', max_length=512,
                                        truncation=True)
-        inputs = {k: v.squeeze(0) for k, v in inputs.items()}  # 移除批处理维度
+        inputs = {k: v.squeeze(0) for k, v in inputs.items()}  
         return inputs
 
 
@@ -43,7 +43,7 @@ def predict_on_dataset(model, file_path, label_map, device):
     data = pd.read_excel(file_path)
     data['来电内容'] = data['来电内容'].apply(clean_text)
     texts = data['来电内容'].tolist()
-
+    print("Text cleaned")
     dataset = PredictionDataset(tokenizer, texts)
     dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
 
@@ -57,16 +57,17 @@ def predict_on_dataset(model, file_path, label_map, device):
             outputs = model(**inputs)
             _, pred = torch.max(outputs.logits, dim=1)
             predictions.append(index_to_label[pred.item()])
-
+    print("Finish inference")
     data['predicted_label'] = predictions
     data.to_excel('predicted_dataset.xlsx')
+    print("saved to predicted_dataset.xlsx")
 
 
 def predict_single_text(model, text, label_map, device):
     text = clean_text(text)
-    print("Done Cleaned Text")
+    print("Done cleaned text")
     inputs = tokenizer.encode_plus(text, add_special_tokens=True, return_tensors='pt', max_length=512, truncation=True)
-    print("Done Tokenized")
+    print("Done tokenized")
     inputs = {k: v.to(device) for k, v in inputs.items()}
     index_to_label = {v: k for k, v in label_map.items()}
     print("Next to predict")
