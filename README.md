@@ -21,6 +21,10 @@ Please check [INSTALL.md](INSTALL.md) for installation instructions.
 
 <!-- ## Training
 
+## Basic Recipe
+Download the model(pth）then place in the /model, then run main.py.
+If you provide a dataset, type in "1" and input the path.
+If you want to get a classification of a complaint, tap "2," then type in the “Contents of calls” section of the 12345 report.
 ### Basic Recipe
 We list commands for early dropout, early stochastic depth on `ViT-T` and late stochastic depth on `ViT-B`.
 - For training other models, change `--model` accordingly, e.g., to `vit_tiny`, `mixer_s32`, `convnext_femto`, `mixer_b16`, `vit_base`.
