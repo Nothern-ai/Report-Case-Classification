@@ -20,7 +20,7 @@ results with improved recipe
 Please check [INSTALL.md](INSTALL.md) for installation instructions. 
 
 ## Basic Recipe
-Download the model(pth） place it in the /model, then run main.py.
+Download the model(pth), place it in the /model, then run main.py.
 If you provide a dataset, type in "1" and input the path.
 If you want to get a classification of a complaint, tap "2," then type in the “Contents of calls” section of the 12345 report.
 
