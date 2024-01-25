@@ -23,11 +23,6 @@ Please check [INSTALL.md](INSTALL.md) for installation instructions.
 Download the model(pth） place it in the /model, then run main.py.
 If you provide a dataset, type in "1" and input the path.
 If you want to get a classification of a complaint, tap "2," then type in the “Contents of calls” section of the 12345 report.
-### Basic Recipe
-We list commands for early dropout, early stochastic depth on `ViT-T` and late stochastic depth on `ViT-B`.
-- For training other models, change `--model` accordingly, e.g., to `vit_tiny`, `mixer_s32`, `convnext_femto`, `mixer_b16`, `vit_base`.
-- Our results were produced with 4 nodes, each with 8 gpus. Below we give example commands on both multi-node and single-machine setups.
-
 
 ## Acknowledgement
 This repository is built using the [Lee Meng](https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html#%E7%94%A8-BERT-fine-tune-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8B%99) codebase.
